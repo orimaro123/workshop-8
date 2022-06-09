@@ -10,6 +10,8 @@ const {
 
 const jediRouter = express.Router();
 
+//TODO 6 Add validation schema in proper request
+//TODO 8 Add auth middleware to all routes
 jediRouter.get('/', getAll);
 jediRouter.get('/:id', getJedi);
 jediRouter.post('/', validateSchema(jediSchema), createJedi);
