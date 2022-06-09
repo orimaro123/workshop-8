@@ -1,6 +1,6 @@
 const express = require('express');
 const compression = require('compression');
-
+require('express-async-errors');
 const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/error_handler');
 const jediRouter = require('./routers/jediRouter');
