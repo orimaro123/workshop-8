@@ -1,5 +1,6 @@
 module.exports = function errorHandler(err, req, res, next) {
     console.log("Received error", err.message);
+    console.log("Stacktrace", err.stack);
     if(res.headersSent){
         return next(err)
     }
