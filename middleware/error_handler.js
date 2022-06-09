@@ -1,8 +1,11 @@
-module.exports = function errorHandler(error, req, res, next) {
-    console.log("Received error", error.message);
-    let status = error.statusCode || 500;
+module.exports = function errorHandler(err, req, res, next) {
+    console.log("Received error", err.message);
+    if (res.headersSent) {
+        return next(err);
+    }
+    let status = err.statusCode || 500;
     res.status(status).json({
         "status": status,
-        "error": `${error.message || "Something went wrong"}`
+        "error": `${err.message || "Something went wrong"}`
     });
 };
